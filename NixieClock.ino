@@ -3,6 +3,7 @@
 *
 * Code to run a Nixie Clock designed by Colin Luoma
 *
+* Uses a GPS devices to get current time
 */
 
 #include <TinyGPS++.h>
@@ -133,7 +134,7 @@ loop()
     while (ss.available() > 0)
         gps.encode(ss.read());
 
-    // Read tac switch 1, this switch increments the hour offset by 1 for each press
+    // Read tac switch 1, this switch increments the hour offset by 1
     if (digitalRead(tac_switch_1) == HIGH && debounce == 0)
     {
         hour_offset += 1;
