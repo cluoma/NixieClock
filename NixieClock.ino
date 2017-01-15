@@ -40,6 +40,9 @@ setup()
 
     // Setup pins
     pinMode(tac_switch_1, INPUT);
+    pinMode(tac_switch_2, INPUT);
+    pinMode(tac_switch_3, INPUT);
+    pinMode(tac_switch_4, INPUT);
     pinMode(latchPin, OUTPUT);
     pinMode(clockPin, OUTPUT);
     pinMode(dataPin, OUTPUT);
