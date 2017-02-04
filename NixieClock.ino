@@ -22,6 +22,9 @@ uint8_t hour_offset = 0;
 int debounce = 0;
 unsigned long debounce_time = 0;
 
+// Turn to 0 when tac switch 3 is pressed for the first time
+int first_t3_press = 1;
+
 // Pin Definitions
 int tac_switch_1 = 4;
 int tac_switch_2 = 13;
@@ -156,6 +159,11 @@ loop()
     // Read tac switch 3, this generates a matrix-style random 4-digit number
     if (digitalRead(tac_switch_3) == HIGH && debounce == 0)
     {
+        if (first_t3_press)
+        {
+            srand(millis() + analogRead(A0));
+            first_t3_press = 0;
+        }
         matrix_random();
     }
 
